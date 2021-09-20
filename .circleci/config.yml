@@ -17,7 +17,7 @@ jobs:
             docker run --name temp -d -p 8080:8080 node_app 
             docker inspect temp
             # sleep 5
-            # curl "http://temp:8080" 
+            curl "http://temp:8080" 
       - deploy:
           name: Push application Docker image
           command: |
