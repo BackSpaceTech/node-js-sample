@@ -1,14 +1,12 @@
 # syntax=docker/dockerfile:1
-FROM node:latest
+FROM node:10.19.0
 
 WORKDIR /opt/app/
 
-COPY ../package*.json ./
+COPY ./ .
 
 RUN npm install
 
-COPY ../ .
-
 EXPOSE 8080
 
-CMD ["npm", "run"]
+CMD ["npm", "start"]
