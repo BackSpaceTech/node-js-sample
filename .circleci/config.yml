@@ -6,7 +6,7 @@ jobs:
       - image: circleci/node
     steps:
       - checkout
-      - setup_remote_docker
+      # - setup_remote_docker
       - run:
           name: Build application Docker image
           command: |
@@ -17,8 +17,8 @@ jobs:
             docker run --name temp -d -p 8080:8080 node_app 
             docker inspect temp
             # sleep 5
-            # curl "http://localhost:8080" 
-      - deploy:
+            curl "http://localhost:8080" 
+      - run:
           name: Push application Docker image
           command: |
             docker login -u $DOCKERHUB_ID -p $DOCKERHUB_PASSWORD
