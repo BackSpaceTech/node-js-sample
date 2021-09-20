@@ -1,0 +1,12 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: circleci/node:11.10.1
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          docker build -t dauthevilleimage .
+      - run:
+          docker run -d -p 2368:2368 dauthevilleimage
