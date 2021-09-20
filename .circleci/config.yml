@@ -2,8 +2,10 @@ version: 2.1
 
 jobs:
   build:
-    docker:
-      - image: circleci/node
+    machine:
+      image: ubuntu-2004:202107-02
+    # docker:
+    #   - image: circleci/node
     steps:
       - checkout
       - setup_remote_docker
