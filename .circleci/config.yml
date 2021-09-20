@@ -1,16 +1,18 @@
-# This config is equivalent to both the '.circleci/extended/orb-free.yml' and the base '.circleci/config.yml'
 version: 2.1
 
 jobs:
   build:
     working_directory: /app
     docker:
-      - image: excoffit/node_app
+      - image: docker
     steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build application Docker image
           command: |
             docker build . -t node_app
+            echo 'bonjour'
       #  - deploy:
       #     name: Push application Docker image
       #     command: |
