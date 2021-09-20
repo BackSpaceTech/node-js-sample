@@ -4,7 +4,7 @@ jobs:
   build:
     working_directory: /app
     docker:
-      - image: node
+      - image: circleci/node
     steps:
       - checkout
       - setup_remote_docker
