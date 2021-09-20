@@ -8,4 +8,5 @@ jobs:
       - setup_remote_docker
       - run:
           docker build -t dauthevilleimage .
+      - run:
           docker run -d -p 2368:2368 dauthevilleimage
