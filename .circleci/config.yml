@@ -2,13 +2,11 @@ version: 2.1
 
 jobs:
   build:
-    machine:
-      image: ubuntu-2004:202107-02
-    # docker:
-    #   - image: circleci/node
+    docker:
+      - image: circleci/node
     steps:
-      # - checkout
-      # - setup_remote_docker
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build application Docker image
           command: |
@@ -16,9 +14,10 @@ jobs:
       - run:
           name: Run tests
           command: |
-            docker run -d -p 8080:8080 node_app
-            sleep 5
-            curl "http://localhost:8080" 
+            docker run --name temp -d -p 8080:8080 node_app 
+            docker inspect temp
+            # sleep 5
+            # curl "http://localhost:8080" 
       - deploy:
           name: Push application Docker image
           command: |
