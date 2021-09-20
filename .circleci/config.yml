@@ -15,8 +15,8 @@ jobs:
       - run:
           name: Run tests
           command: |
-            docker run -d -p 8080:8080 node_app
-            curl http://host.docker.internal:8080 
+            docker run -d --network='host' -p 8080:8080 node_app
+            curl http://localhost:8080 
       #  - deploy:
       #     name: Push application Docker image
       #     command: |
