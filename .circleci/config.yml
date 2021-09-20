@@ -11,11 +11,11 @@ jobs:
           name: Build application Docker image
           command: |
             docker build . -t node_app
-            echo 'bonjour'
       - run:
           name: Run tests
           command: |
-            docker run -p 8080:8080 node_app
+            docker run -d -p 8080:8080 node_app
+            sleep 5
             curl "http://localhost:8080" 
       - deploy:
           name: Push application Docker image
