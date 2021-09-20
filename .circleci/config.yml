@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  build:
+  build-publish:
     machine:
       image: ubuntu-2004:202107-02
     steps:
@@ -16,21 +16,10 @@ jobs:
           command: |
             docker run --name temp -d -p 8888:8080 node_app 
             sleep 10
-            curl "http://localhost:8888" 
-  publish:
-    machine:
-      image: ubuntu-2004:202107-02
-    steps:
+            curl -I "http://localhost:8888" 
       - run:
           name: Push application Docker image
           command: |
             docker login -u $DOCKERHUB_ID -p $DOCKERHUB_PASSWORD
             docker tag node_app excoffit/node_app
             docker push excoffit/node_app
-workflows:
-  my-workflow:
-    jobs:
-      - build
-      - publish: 
-          requires:
-            - build
