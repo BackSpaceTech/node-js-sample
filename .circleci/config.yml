@@ -7,7 +7,7 @@ version: 2.1
 jobs:
   docker-image:
     docker:
-      - image: cimg/base:stable
+      - image: docker:stable
     steps:
       - checkout
       - run:
