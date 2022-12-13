@@ -1,8 +1,9 @@
-version: 2.1
+version: 2
 jobs:
   build:
-    runs-on: circleci/node10
+    runs-on: circleci/node:10
     steps:
+      - checkout
       - run:
           name: build image
           command: docker build . --name tpcicd
