@@ -6,5 +6,5 @@ jobs:
       - checkout
       - run:
           name: build image
-          command: docker build . --name tpcicd
+          command: docker build . -t tpcicd
         
